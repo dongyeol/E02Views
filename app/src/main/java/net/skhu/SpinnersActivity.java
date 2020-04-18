@@ -11,8 +11,7 @@ import android.widget.Toast;
 
 public class SpinnersActivity extends AppCompatActivity {
 
-    private Spinner spinner;
-
+    boolean t = false;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -22,13 +21,19 @@ public class SpinnersActivity extends AppCompatActivity {
         ArrayAdapter<String> adapter =
                 new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, stringArray);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        final Spinner spinner = (Spinner) findViewById(R.id.spinner_addressType);
-        spinner.setAdapter(adapter);
+        final Spinner spinner1 = (Spinner) findViewById(R.id.spinner_phoneType);
+        final Spinner spinner2 = (Spinner) findViewById(R.id.spinner_addressType);
+        spinner2.setAdapter(adapter);
 
-        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+        spinner2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                Toast.makeText(SpinnersActivity.this,"선택된 항목 : "+spinner.getSelectedItem().toString() ,Toast.LENGTH_LONG).show();
+                if (t == false) {
+                    t = true;
+                    return;
+                }
+                else
+                Toast.makeText(SpinnersActivity.this,"선택된 항목 : "+spinner2.getSelectedItem().toString() ,Toast.LENGTH_LONG).show();
             }
             @Override
             public void onNothingSelected(AdapterView<?> parent) { }
@@ -37,11 +42,11 @@ public class SpinnersActivity extends AppCompatActivity {
         View.OnClickListener listener1 = new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Spinner spinner1 = (Spinner) findViewById(R.id.spinner_phoneType);
+
                 int index1 = spinner1.getSelectedItemPosition();
                 String text1 = spinner1.getSelectedItem().toString();
 
-                Spinner spinner2 = (Spinner) findViewById(R.id.spinner_addressType);
+
                 int index2 = spinner2.getSelectedItemPosition();
                 String text2 = spinner2.getSelectedItem().toString();
 
