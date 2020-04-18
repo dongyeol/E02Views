@@ -92,7 +92,7 @@ public class AlertsActivity extends AppCompatActivity {
             public void onClick(DialogInterface dialog, int index) {
                 // 선택된 항목에 대한 작업 실행
                 ListView listView = ((AlertDialog)dialog).getListView();
-                selectedAnimalIndex = listView.getCheckedItemPosition();
+
                 String msg ="성공!";
                 Toast.makeText(AlertsActivity.this, msg, Toast.LENGTH_SHORT).show();
             }
